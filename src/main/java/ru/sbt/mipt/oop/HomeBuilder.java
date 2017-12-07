@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
+import static ru.sbt.mipt.oop.SmartHomeSaver.saveSmartHome;
+
 public class HomeBuilder {
 
     public static void main(String[] args) throws IOException {
@@ -26,13 +28,7 @@ public class HomeBuilder {
                 Arrays.asList(new Door(false, "4")),
                 "hall");
         SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonString = gson.toJson(smartHome);
-        System.out.println(jsonString);
-        Path path = Paths.get("output.js");
-        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-            writer.write(jsonString);
-        }
+        saveSmartHome(smartHome);
     }
 
 }
