@@ -14,7 +14,7 @@ import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
  */
 
 public class EventHandler {
-    private Collection<EventProcessor> eventProcessors = new ArrayList<>();
+    private List<EventProcessor> eventProcessors = new ArrayList<>();
     private SmartHome smartHome;
 
     public void editEvent(SmartHome smartHome) {
