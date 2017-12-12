@@ -13,9 +13,12 @@ import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 * Класс с методом, обрабатывающим события. В качестве параметра передается нынешнее состояние дома.
  */
 
-public class EventHandler {
+public class EventObserver {
     private List<EventProcessor> eventProcessors = new ArrayList<>();
-    private SmartHome smartHome;
+
+    public void setEventProcessors(List<EventProcessor> eventProcessors) {
+        this.eventProcessors = eventProcessors;
+    }
 
     public void editEvent(SmartHome smartHome) {
 
