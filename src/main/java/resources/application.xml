@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="lightEventProcessor" class="ru.sbt.mipt.oop.LightEventProcessor"/>
+    <bean id="doorEventProcessor" class="ru.sbt.mipt.oop.DoorEventProcessor"/>
+    <bean id="doorScenarioRunner" class="ru.sbt.mipt.oop.DoorScenarioRunner"/>
+
+    <bean id="smartHome" class="ru.sbt.mipt.oop.SmartHomeFileReader" factory-method="readSmartHome" />
+
+    <bean id="EventObserver" class="ru.sbt.mipt.oop.EventObserver">
+        <constructor-arg index="0" ref="smartHome"/>
+        <property name="eventProcessors">
+            <list>
+                <ref bean="lightEventProcessor"/>
+                <ref bean="doorEventProcessor"/>
+                <ref bean="doorScenarioRunner"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

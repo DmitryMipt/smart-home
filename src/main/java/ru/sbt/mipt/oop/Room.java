@@ -2,7 +2,7 @@ package ru.sbt.mipt.oop;
 
 import java.util.Collection;
 
-public class Room {
+public class Room implements Component{
     private Collection<Light> lights;
     private Collection<Door> doors;
     private String name;
@@ -23,5 +23,18 @@ public class Room {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void doIt(Action action) {
+        for (Component light : lights) {
+            light.doIt(action);
+        }
+        for (Component door : doors) {
+            door.doIt(action);
+        }
+        action.doAction(this);
+
+
     }
 }

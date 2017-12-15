@@ -16,13 +16,16 @@ import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 public class EventObserver {
     private List<EventProcessor> eventProcessors = new ArrayList<>();
 
+    public EventObserver(SmartHome smartHome) {
+    }
+
     public void setEventProcessors(List<EventProcessor> eventProcessors) {
         this.eventProcessors = eventProcessors;
     }
 
-    public void editEvent(SmartHome smartHome) {
+    public void editEvent(SensorEvent event, SmartHome smartHome) {
 
-        SensorEvent event = getNextSensorEvent();
+
         while (event != null) {
             System.out.println("Got event: " + event);
             for (EventProcessor processor : eventProcessors) {

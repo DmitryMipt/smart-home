@@ -5,7 +5,7 @@ import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class SmartHome {
+public class SmartHome implements Component{
     Collection<Room> rooms;
 
     public SmartHome() {
@@ -24,4 +24,14 @@ public class SmartHome {
         return rooms;
     }
 
+    @Override
+    public void doIt(Action action) {
+        for (Component room : rooms) {
+            room.doIt(action);
+
+        }
+        action.doAction(this);
+
+
+    }
 }
